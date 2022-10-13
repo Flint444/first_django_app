@@ -6,8 +6,15 @@
 
 {% block content %}
     <div class="features">
-        <h1> Контакты </h1>
-        <p>Cписок пользователей</p>
-
+        <h1>Cписок пользователей</h1>
+            <div class="userslist">
+                {% if request.user.is_authenticated %}
+                    {% for user in form %}
+                        <li class="user">{{ user }}</li>
+                    {% endfor %}
+                {% else %}
+                    <p>Войдите, чтобы посмотреть список пользователей</p>
+                {% endif %}
+            </div>
     </div>
 {% endblock %}

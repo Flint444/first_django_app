@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import View
 from .forms import *
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, get_user_model
 # Create your views here.
 
 def index(request):
@@ -60,3 +60,9 @@ class MyloginView(View):
 
         else:
             return render(request, 'main/login.html', {'form': fm})
+
+class GetUsers(View):
+    def get(self, request):
+        User = get_user_model()
+        users = User.objects.all()
+        return render(request, 'main/contacts.html', {'form':users})

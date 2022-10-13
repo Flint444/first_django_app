@@ -95,3 +95,8 @@ form {
     text-decoration: none;
     transform: scale(1.2);
 }
+
+.userslist {
+    display: inline-block;
+    text-align: left;
+}
