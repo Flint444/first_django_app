@@ -12,15 +12,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning" id ="navbar">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link" aria-current="page" href="#">Login</a>
+            <a class="nav-link" href="#">Sing up</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <aside>
         <img src="{% static 'main/img/logo_simple.png' %}" alt="Лого">
         <span class="logo"> MyProject </span>
         <h3>Навигация</h3>
         <ul>
-            <a href="{% url 'home' %}"><li><i class="fa-solid fa-house-user"></i>Главная</li></a>
-            <a href="{% url 'about' %}"><li><i class="fa-solid fa-address-card"></i>Про нас</li></a>
-            <a href="{% url 'news_home' %}"><li><i class="fa-solid fa-newspaper"></i>Новости</li></a>
-            <a href=""><li><i class="fa-solid fa-address-book"></i>Контакты</li></a>
+            <a id = "link1" href="{% url 'home' %}"><li><i class="fa-solid fa-house-user"></i>Главная</li></a>
+            <a id = "link2" href="{% url 'about' %}"><li><i class="fa-solid fa-address-card"></i>Про нас</li></a>
+            <a id = "link3" href="{% url 'news_home' %}"><li><i class="fa-solid fa-newspaper"></i>Новости</li></a>
+            <a id = "link4" href="{% url 'contacts' %}"><li><i class="fa-solid fa-address-book"></i>Контакты</li></a>
             <a href="{% url 'create' %}"><li><button class="btn btn-info"><i class="fa-solid fa-circle-plus"></i>Добавить запись</button></li></a>
         </ul>
     </aside>
