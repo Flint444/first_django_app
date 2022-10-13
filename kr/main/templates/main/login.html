@@ -8,5 +8,22 @@
     <div class="features">
         <h1> Вход </h1>
 
+        <div class="row justify-content-around">
+            <div class="col-md-5">
+                <form action="" method="post" class="my-3 p-2">
+                    {% csrf_token %}
+
+                    {% for el in form %}
+                        {{ el.label_tag}}
+                        {{ el }}
+                        <small class="text-danger"> {{ el.errors }} </small>
+                    {% endfor %}
+                    <input type="submit" value="Войти" class="btn btn-primary mt-2">
+                </form>
+            </div>
+        </div>
+
     </div>
+
+
 {% endblock %}

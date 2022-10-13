@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import View
 from .forms import *
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
 def index(request):
@@ -37,5 +38,25 @@ class SignupView(View):
         else:
             return render(request, 'main/signup.html', {'form': fm})
 
-def loginView(request):
-    return render(request, 'main/login.html')
+class MyloginView(View):
+    def get(self, request):
+        fm = MyLoginForm()
+        return render(request, 'main/login.html', {'form': fm})
+
+    def post(self, request):
+        fm = MyLoginForm(request, data=request.POST)
+
+        if fm.is_valid():
+            username = fm.cleaned_data['username']
+            password = fm.cleaned_data['password']
+
+            user = authenticate(request, username = username, password = password)
+
+            if user is not None:
+                login(request, user)
+                return redirect('/')
+            else:
+                return render(request, 'main/login.html', {'form': fm})
+
+        else:
+            return render(request, 'main/login.html', {'form': fm})
