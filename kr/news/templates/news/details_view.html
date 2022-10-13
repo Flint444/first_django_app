@@ -10,5 +10,10 @@
         <p> {{ article.date }} </p>
         <p> {{ article.full_text }} </p>
 
+        <a href="{% url 'news_home' %}" class="btn btn-warning">Назад</a>
+        <p></p>
+        <a href="{% url 'news-update' article.id %}" class="btn btn-info">Редактировать</a>
+        <a href="{% url 'news-delete' article.id %}" class="btn btn-danger">Удалить</a>
+
     </div>
 {% endblock %}
