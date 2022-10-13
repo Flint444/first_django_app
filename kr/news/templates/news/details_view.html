@@ -8,7 +8,8 @@
     <div class="features">
         <h1> {{ article.title }} </h1>
         <p> {{ article.date }} </p>
-        <p> {{ article.full_text }} </p>
+
+        <p id = 'text_center_news'> {{ article.full_text }} </p>
 
         <a href="{% url 'news_home' %}" class="btn btn-warning">Назад</a>
         <p></p>
