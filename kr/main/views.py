@@ -1,5 +1,7 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from django.views.generic import View
+from .forms import *
+from django.contrib import messages
 # Create your views here.
 
 def index(request):
@@ -19,3 +21,21 @@ def about(request):
 
 def contacts(request):
     return render(request, 'main/contacts.html')
+
+class SignupView(View):
+    def get(self, request):
+        fm = SignUpForm()
+        return render(request, 'main/signup.html', {'form':fm})
+
+    def post(self, request):
+        fm = SignUpForm(request.POST)
+
+        if fm.is_valid():
+            fm.save()
+            messages.success(request, 'Вы успешно зарегестрировались')
+            return redirect('signup')
+        else:
+            return render(request, 'main/signup.html', {'form': fm})
+
+def loginView(request):
+    return render(request, 'main/login.html')

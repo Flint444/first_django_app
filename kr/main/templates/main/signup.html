@@ -1,0 +1,37 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    Регистрация
+{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1> Регистрация </h1>
+
+        <div class="row justify-content-around">
+            <div class="col-sm-6">
+                <form action="" method="post" class="p-3">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong> {{ message }} </strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% csrf_token %}
+
+                    {% for el in form %}
+                        {{ el.label_tag }}
+                        {{ el }}
+                        <small class="text-danger">{{ el.errors|striptags }}</small>
+                    {% endfor %}
+                    <input type="submit" value="Зарегистрироваться" class="btn btn-primary my-2">
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
